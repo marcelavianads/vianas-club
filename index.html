@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Viana's Fit</title>
+  <meta name="description" content="Treino pessoal: academia e casa, com registro de cargas, descanso cronometrado e evolução.">
+  <meta name="theme-color" content="#140C0E">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Viana's Fit">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icones/icone-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icones/apple-touch-icon.png">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="marca">Viana's <b>Fit</b></div>
+    <div class="data" id="data-hoje"></div>
+  </header>
+
+  <main id="tela" aria-live="polite"></main>
+
+  <nav class="abas" aria-label="Telas">
+    <button data-aba="hoje">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>Hoje
+    </button>
+    <button data-aba="historico">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-4 3 3 5-6"/></svg>Histórico
+    </button>
+    <button data-aba="avaliacoes">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8.5 10a3.5 3.5 0 0 1 7 0M12 10l1.5-2"/></svg>Avaliações
+    </button>
+    <button data-aba="plano">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg>Plano
+    </button>
+  </nav>
+
+  <div class="timer" id="timer" hidden>
+    <div class="relogio" id="timer-relogio">0:00</div>
+    <div class="info"><span id="timer-titulo">Descanso</span><b id="timer-prox"></b></div>
+    <button data-acao="timer-mais" aria-label="Mais 15 segundos">+15</button>
+    <button data-acao="timer-pular" aria-label="Pular descanso">Pular</button>
+    <div class="barra"><i id="timer-barra"></i></div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+  <div id="camada"></div>
+  <div id="pergunta"></div>
+  <input type="file" id="arquivo" accept=".json,application/json" hidden>
+
+  <script src="treinos.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
