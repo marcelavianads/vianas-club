@@ -405,7 +405,7 @@ function marcarSerie(i, k) {
   if (!ultimoDeTodos) {
     const prox = exCompleto ? s.exercicios.slice(i + 1).find(x => x.sets.some(y => !y.feito)) || s.exercicios.find(x => x.sets.some(y => !y.feito)) : ex;
     const falta = ex.sets.findIndex(x => !x.feito);
-    const proxTxt = exCompleto ? (prox ? 'Próximo: ' + prox.nome : '') : `Próxima: série ${falta + 1} de ${ex.sets.length}`;
+    const proxTxt = exCompleto ? (prox ? 'Próximo: ' + prox.nome : '') : `Série ${falta + 1} de ${ex.sets.length}`;
     iniciarTimer(ex.descanso, proxTxt);
   } else pararTimer();
   if (exCompleto) {
@@ -509,14 +509,14 @@ function graficoSVG(pontos, unidade) {
   const ticks = [mx - folga, (mx + mn) / 2, mn + folga];
   const ult = pontos[pontos.length - 1];
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Evolução de ${esc(pontos[0].y)} a ${esc(ult.y)} ${unidade}">
-    <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#9E4F68" stop-opacity=".35"/><stop offset="1" stop-color="#9E4F68" stop-opacity="0"/></linearGradient></defs>
-    ${ticks.map(v => `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="#43292E" stroke-width="1"/><text x="${pl - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#8F7871">${fmt(Math.round(v * 10) / 10)}</text>`).join('')}
+    <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#BC5A40" stop-opacity=".25"/><stop offset="1" stop-color="#BC5A40" stop-opacity="0"/></linearGradient></defs>
+    ${ticks.map(v => `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="#E8D9CB" stroke-width="1"/><text x="${pl - 6}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#968677">${fmt(Math.round(v * 10) / 10)}</text>`).join('')}
     <path d="${area}" fill="url(#g)"/>
-    <path d="${linha}" fill="none" stroke="#D08AA0" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
-    ${pontos.map((p, i) => `<circle cx="${x(i)}" cy="${y(p.y)}" r="${i === pontos.length - 1 ? 5 : 3}" fill="${i === pontos.length - 1 ? '#CDA85F' : '#D08AA0'}"/>`).join('')}
-    <text x="${pl}" y="${H - 6}" font-size="11" fill="#8F7871">${dataCurta(pontos[0].x)}</text>
-    <text x="${W - pr}" y="${H - 6}" font-size="11" fill="#8F7871" text-anchor="end">${dataCurta(ult.x)}</text>
-    <text x="${Math.min(x(pontos.length - 1), W - pr - 4)}" y="${Math.max(y(ult.y) - 10, 12)}" font-size="12" font-weight="700" fill="#F4EADB" text-anchor="end">${fmt(ult.y)} ${unidade}</text>
+    <path d="${linha}" fill="none" stroke="#BC5A40" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    ${pontos.map((p, i) => `<circle cx="${x(i)}" cy="${y(p.y)}" r="${i === pontos.length - 1 ? 5 : 3}" fill="${i === pontos.length - 1 ? '#94652F' : '#BC5A40'}"/>`).join('')}
+    <text x="${pl}" y="${H - 6}" font-size="11" fill="#968677">${dataCurta(pontos[0].x)}</text>
+    <text x="${W - pr}" y="${H - 6}" font-size="11" fill="#968677" text-anchor="end">${dataCurta(ult.x)}</text>
+    <text x="${Math.min(x(pontos.length - 1), W - pr - 4)}" y="${Math.max(y(ult.y) - 10, 12)}" font-size="12" font-weight="700" fill="#2E231D" text-anchor="end">${fmt(ult.y)} ${unidade}</text>
   </svg>`;
 }
 

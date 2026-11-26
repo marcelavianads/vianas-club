@@ -1,6 +1,6 @@
 /* Guarda o app no aparelho para abrir sem internet. Não guarda nem envia seus treinos.
    Quando mudar algum arquivo, troque o número em CACHE (ex.: vianasfit-v2) para o celular pegar a versão nova. */
-const CACHE = 'vianasfit-v3';
+const CACHE = 'vianasfit-v4';
 const BASE = ['./', 'index.html', 'estilo.css', 'app.js', 'treinos.js', 'manifest.webmanifest',
   'icones/icone-192.png', 'icones/icone-512.png', 'icones/apple-touch-icon.png'];
 self.addEventListener('install', e => {
