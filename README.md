@@ -1,4 +1,4 @@
-# Viana's Fit
+# Tchela Club
 
 App de treino pessoal (academia e casa) que funciona no iPhone como app instalado, inclusive sem internet.
 
@@ -17,7 +17,7 @@ App de treino pessoal (academia e casa) que funciona no iPhone como app instalad
 
 1. Abra `treinos.js` e mude o que quiser (cada campo está explicado no topo do arquivo).
 2. Aumente o número de `versao` no começo do plano (ex.: de 1 para 2).
-3. Em `sw.js`, aumente o número em `CACHE` (ex.: `vianasfit-v2` → `vianasfit-v3`).
+3. Em `sw.js`, aumente o número em `CACHE` (ex.: `vianasfit-v3` → `vianasfit-v4`).
 4. Publique de novo. No iPhone, abra o app duas vezes para ele pegar a versão nova.
 
 Se você editou o plano pelo próprio app (tela Plano), ele **não** é trocado automaticamente.

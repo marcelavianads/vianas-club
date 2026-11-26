@@ -1,4 +1,5 @@
-/* Viana's Fit — lógica do app.
+/* Tchela Club — lógica do app.
+   (Os nomes internos 'vianasfit'/'vianas-fit' ficam de propósito: são a chave dos dados e o carimbo do backup.)
    Os dados ficam só neste aparelho (localStorage). Nada é enviado para a internet. */
 (() => {
 'use strict';
@@ -304,7 +305,7 @@ function telaTreino() {
 
     <div class="ex ${s.aquecido ? 'completo' : ''}">
       <div class="ex-topo"><span class="ex-num">${s.aquecido ? '✓' : '0'}</span>
-        <div style="flex:1"><h3>Aquecimento · 5 min</h3><p class="pequeno" style="margin:4px 0 0">${esc(E.plano.aquecimento[s.local])}</p></div></div>
+        <div style="flex:1"><h3>Aquecimento · 5 min</h3><p class="pequeno" style="margin:4px 0 0">${esc(E.plano.aquecimento[s.local])}</p><p class="pequeno" style="margin:6px 0 0;color:var(--ouro)">Lembrete: inicie a atividade Força no seu Garmin.</p></div></div>
       <div class="linha-btns"><button class="btn sec" data-acao="aquecido">${s.aquecido ? 'Feito ✓' : 'Marcar como feito'}</button></div>
     </div>
 
@@ -672,7 +673,7 @@ function telaPlano() {
       <p class="pequeno" style="margin-top:0">Volta o plano para o original do arquivo treinos.js. O histórico e as avaliações não são apagados.</p>
       <button class="btn perigo" data-acao="restaurar-plano">Restaurar plano original</button>
     </div>
-    <p class="pequeno fraco" style="text-align:center">Viana's Fit · plano versão ${E.plano.versao || 1}${E.planoEditado ? ' (editado no app)' : ''}</p>`;
+    <p class="pequeno fraco" style="text-align:center">Tchela Club · plano versão ${E.plano.versao || 1}${E.planoEditado ? ' (editado no app)' : ''}</p>`;
 }
 
 // Editor de exercício / treino (folha que sobe por cima da tela)
@@ -772,13 +773,13 @@ async function baixar(nome, txt) {
 async function exportar() {
   const dados = { ...E }; delete dados.emAndamento;
   const txt = JSON.stringify({ app: 'vianas-fit', v: 1, em: new Date().toISOString(), dados }, null, 1);
-  const ok = await baixar(`vianas-fit-backup-${isoDia()}.json`, txt);
+  const ok = await baixar(`tchela-club-backup-${isoDia()}.json`, txt);
   if (ok) { E.ultimoBackup = isoDia(); salvar(); toast('Backup pronto. Salve em Arquivos → iCloud Drive.'); render(); }
 }
 async function importar(texto) {
   let b;
   try { b = JSON.parse(texto); } catch (e) { toast('Esse arquivo não é um backup válido.'); return; }
-  if (!b || b.app !== 'vianas-fit' || !b.dados) { toast("Esse arquivo não é um backup do Viana's Fit."); return; }
+  if (!b || b.app !== 'vianas-fit' || !b.dados) { toast('Esse arquivo não é um backup do Tchela Club.'); return; }
   if (b.parcial) {
     const novas = (b.dados.avaliacoes || []).filter(a => !E.avaliacoes.some(x => x.data === a.data));
     E.avaliacoes.push(...novas.map(a => ({ id: novoId(), ...a })));

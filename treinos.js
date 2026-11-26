@@ -1,5 +1,5 @@
 /*
-  TREINOS DO VIANA'S FIT
+  TREINOS DO TCHELA CLUB
   ----------------------
   Este é o arquivo para editar os treinos. Cada treino (A a E) tem uma lista de exercícios.
   Cada exercício tem a versão "academia" e a versão "casa" (mesmo foco muscular).
