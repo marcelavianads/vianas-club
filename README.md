@@ -1,4 +1,4 @@
-# Tchela Club
+# Vianas Club
 
 App de treino pessoal (academia e casa) que funciona no iPhone como app instalado, inclusive sem internet.
 

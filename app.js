@@ -1,4 +1,4 @@
-/* Tchela Club — lógica do app.
+/* Vianas Club — lógica do app.
    (Os nomes internos 'vianasfit'/'vianas-fit' ficam de propósito: são a chave dos dados e o carimbo do backup.)
    Os dados ficam só neste aparelho (localStorage). Nada é enviado para a internet. */
 (() => {
@@ -673,7 +673,7 @@ function telaPlano() {
       <p class="pequeno" style="margin-top:0">Volta o plano para o original do arquivo treinos.js. O histórico e as avaliações não são apagados.</p>
       <button class="btn perigo" data-acao="restaurar-plano">Restaurar plano original</button>
     </div>
-    <p class="pequeno fraco" style="text-align:center">Tchela Club · plano versão ${E.plano.versao || 1}${E.planoEditado ? ' (editado no app)' : ''}</p>`;
+    <p class="pequeno fraco" style="text-align:center">Vianas Club · plano versão ${E.plano.versao || 1}${E.planoEditado ? ' (editado no app)' : ''}</p>`;
 }
 
 // Editor de exercício / treino (folha que sobe por cima da tela)
@@ -773,13 +773,13 @@ async function baixar(nome, txt) {
 async function exportar() {
   const dados = { ...E }; delete dados.emAndamento;
   const txt = JSON.stringify({ app: 'vianas-fit', v: 1, em: new Date().toISOString(), dados }, null, 1);
-  const ok = await baixar(`tchela-club-backup-${isoDia()}.json`, txt);
+  const ok = await baixar(`vianas-club-backup-${isoDia()}.json`, txt);
   if (ok) { E.ultimoBackup = isoDia(); salvar(); toast('Backup pronto. Salve em Arquivos → iCloud Drive.'); render(); }
 }
 async function importar(texto) {
   let b;
   try { b = JSON.parse(texto); } catch (e) { toast('Esse arquivo não é um backup válido.'); return; }
-  if (!b || b.app !== 'vianas-fit' || !b.dados) { toast('Esse arquivo não é um backup do Tchela Club.'); return; }
+  if (!b || b.app !== 'vianas-fit' || !b.dados) { toast('Esse arquivo não é um backup do Vianas Club.'); return; }
   if (b.parcial) {
     const novas = (b.dados.avaliacoes || []).filter(a => !E.avaliacoes.some(x => x.data === a.data));
     E.avaliacoes.push(...novas.map(a => ({ id: novoId(), ...a })));
